@@ -40,6 +40,16 @@ export class HomePage {
 				this.categories.push(cate[i]);
 			}
 		  }
+      
+		let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+			alert('No Internet Connection! To get Your Data , Open Your Data Mode');
+	  
+		});
+		
+		let connectionCheck = this.network.onConnect().subscribe(() => {
+			this.getData();
+			
+		});
 	}
     else {
 		this.categories = [];
@@ -60,14 +70,7 @@ export class HomePage {
   }
   
   getData() {
-    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-		alert('No Internet Connection! To get Your Data , Open Your Data Mode');
-	});
-	
-	let connectionCheck = this.network.onConnect().subscribe(() => {
-			
-			
-		
+    
 	let loading = this.loadingCtrl.create();
 	loading.present();
 	    
@@ -91,7 +94,6 @@ export class HomePage {
     setTimeout(() => {
 		  loading.dismiss();
 	    }, 3000);
-	
-	});
+	    
   }
 }

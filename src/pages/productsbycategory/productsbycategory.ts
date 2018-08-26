@@ -62,8 +62,7 @@ export class ProductsByCategoryPage {
   
   getData() {
 	let loading = this.loadingCtrl.create();
-	loading.present();
-   
+	loading.present();  
 	this.WooCommerce = this.WP.init();
 	this.WooCommerce.getAsync("products?filter[product_cat]=" + this.category.slug).then( (data) => {
       console.log(JSON.parse(data.body));
