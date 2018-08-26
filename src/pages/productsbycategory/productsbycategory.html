@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="brand">
+    <ion-title>{{category.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-refresher (ionRefresh)="refresher($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown"
+							   pullingText="Pull to refresh"
+							   refreshingSpinner="dots"
+							   refreshingText="Reload from Your Data ...">
+		</ion-refresher-content>
+	</ion-refresher>
+	
+	<ion-row wrap>
+	  <ion-col no-padding col-6 *ngFor="let product of productsbycategory">  
+		  <ion-card (tap)="itemTapped($event, product)">	
+			  <ion-card class="img-width">
+				<img *ngIf="product.images[0].src" [src]="product.images[0].src" />
+			  </ion-card>
+			 
+			  <div class="product-text">
+				<h2 *ngIf="product.name" [innerHTML]="product.name"></h2>
+				<h3>~ DETAILS ~</h3>
+			  </div>
+		</ion-card>
+	  </ion-col>
+	</ion-row>
+</ion-content>

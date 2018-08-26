@@ -1,19 +1,27 @@
-<ion-menu [content]="content">
-  <ion-header>
+<div class="{{global.state['theme']}}">
+<ion-menu [content]="content" id="menu-avatar">
+ <ion-header color="brand">
     <ion-toolbar>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-list>
+  <ion-content class="card-background-page">
+	<div class="menu-header">
+	  <!--material-design-background-->
+	  <div class="card-title"><img src="../assets/images/polo.png" /></div>
+	</div>
+		
+    <ion-list no-lines class="pagelist">
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        <ion-icon [name]="p.icon" item-left></ion-icon> {{p.title}}
       </button>
     </ion-list>
   </ion-content>
+
 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</div>

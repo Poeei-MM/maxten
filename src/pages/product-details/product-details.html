@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="brand">
+    <ion-title> {{ product.name }} Details </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-slides autoplay="3000" loop="true">
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src" />
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{ product.name }} &nbsp;
+        <br>
+        <ion-chip *ngFor="let cat of product.categories" style="margin-left: 5px;" color="primary">
+          <ion-label> {{ cat.name }} </ion-label>
+        </ion-chip>
+      </ion-card-title>
+
+      <p class="textdesc" [innerHTML]="product.short_description"></p>
+	  
+    </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-card *ngIf="product.variations.length != 0">
+    <ion-item-divider color="brand">Product options</ion-item-divider>
+    <ng-container *ngFor="let attribute of product.attributes">
+      <ion-item *ngIf="attribute.variation">
+        <ion-label> {{ attribute.name }}</ion-label>
+        <div item-content *ngFor="let option of attribute.options">
+		  <ion-chip style="margin-left: 5px;" color="primary">
+			<ion-label>{{option}}</ion-label>
+		  </ion-chip>
+        </div>
+      </ion-item>
+      
+    </ng-container>
+  </ion-card>
+
+</ion-content>

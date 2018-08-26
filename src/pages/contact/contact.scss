@@ -1,0 +1,32 @@
+page-contact{
+	ion-list p{
+		color: blue !important;
+	}
+	ion-list a{
+		text-decoration:none;
+	}
+	
+	//google
+	.scroll {
+		height: 100%
+	}
+	#map {
+		width: 100%;
+		height: 200px;
+	}
+	
+	.google-map-route{
+		text-align:center;
+	}
+	.google-map-route button{
+		width: 100px;
+		padding: 10px;
+		background-color: #106bd3;
+		font-size: 12px;
+		margin-bottom:20px;
+		margin-top:-10px;
+	}
+	.icon-class{
+		color:#344153;
+	}
+}

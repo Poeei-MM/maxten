@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Setting</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h3 class="h3color">Change Mode</h3>
+  <button class="pop-in" ion-button (click)="changeTheme('')">
+	  <ion-icon name="ios-sunny" style="margin-right:3px;font-weight:bold"></ion-icon>Day Mode
+  </button>
+  <button class="pop-in" ion-button color="dark" (click)="changeTheme('theme-dark')">
+	  <ion-icon name="ios-moon-outline" style="margin-right:3px;font-weight:bold"></ion-icon>Night Mode
+  </button>
+</ion-content>

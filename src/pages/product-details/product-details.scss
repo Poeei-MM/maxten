@@ -1,0 +1,18 @@
+page-product-details {
+	ion-card-content {
+		background-color: color($colors, brand);
+		
+		ion-card-title {
+			font-size: 5rem;
+			font-weight: bold;
+			text-align: center;
+			color: black;
+		}
+		
+		p.textdesc {
+			font-size: 3rem;
+			font-weight: bold;
+			color: black;
+		}
+	}
+}

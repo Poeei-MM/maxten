@@ -14,3 +14,51 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@import '../theme/dark.theme';
+@import '../theme/light.theme';
+@import '../theme/animations';
+
+.card-background-page {
+	background-color: color($colors, brand);
+	
+  .menu-header {
+    padding: 5px 15px;
+    background-image: url('../assets/images/bathroom.jpg');
+    background-size: cover;
+    height: 25%;
+    color: white;
+    
+    .email {
+      font-weight: 500;
+      text-align: right;
+    }
+    
+    .user-avatar {
+		margin-top: 15px;
+		padding: .4em;
+		border-radius: 50%;
+		height: 10vh;
+	  }
+    .card-title {
+		position: absolute;
+		top:16%;
+		font-size: 1em;
+		text-align: left;
+		width: 50%;
+		font-weight: bold;
+		color: #fff;
+	  }
+  }
+  
+  
+	.pagelist .item {
+	  background-color: color($colors, brand);
+	  color: #fff;
+	}
+}
+
+.toolbar-background {
+  background-color: color($colors, brand);
+  color: #fff;
+}
