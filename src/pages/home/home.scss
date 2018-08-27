@@ -9,11 +9,11 @@ page-home {
   ion-slides,
   .swiper-container {
     width: 100%;
-    height: 200px;
+    height: 220px;
     background-color: blue;
   }
   .swiper-slide {
-    background-size: fixed !important;
+    background-size: cover !important;
     background-position: center !important;
     background-color: red;
   }
