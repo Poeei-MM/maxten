@@ -1,19 +1,21 @@
 page-home {
   ion-slide {
+	margin: 0px;
 	  h2 {
 		color: color($colors,brand);
 	  }
   }
+  
   ion-slides,
   .swiper-container {
     width: 100%;
-    padding: 0px;
-    margin: 0px auto;
-    background-color: red;
+    height: 200px;
+    background-color: blue;
   }
   .swiper-slide {
-    background-size: cover !important;
+    background-size: fixed !important;
     background-position: center !important;
+    background-color: red;
   }
   .swiper-pagination-bullet {
     /*background-color: color($colors,brand);*/
