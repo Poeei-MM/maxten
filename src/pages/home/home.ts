@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, Slides, LoadingController } from '
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 import * as WC from 'woocommerce-api';
 import { Network } from '@ionic-native/network';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the HomePage page.
@@ -21,16 +23,22 @@ export class HomePage {
   WooCommerce: any;
   categories: any[];
   cate: any;
+  sliders: any[];
   @ViewChild('categorySlides') categorySlides: Slides;
   
-  constructor(public navCtrl: NavController, private WP: WoocommerceProvider,private network: Network, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+			  private WP: WoocommerceProvider,
+			  private network: Network, 
+			  public loadingCtrl: LoadingController,
+			  public http: Http) {
+	
 	
 	
   }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomersPage');
-    if(localStorage.getItem('products')) {
+    if(localStorage.getItem('products') || localStorage.getItem('sliders')) {
 		let data = localStorage.getItem('products');
 		let cate = JSON.parse(data);
 		this.categories = [];
@@ -41,6 +49,10 @@ export class HomePage {
 			}
 		  }
       
+        let slider = localStorage.getItem('sliders');
+        this.sliders = JSON.parse(slider);
+        console.log(this.sliders);
+        
 		let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
 			alert('No Internet Connection! To get Your Data , Open Your Data Mode');
 	  
@@ -94,6 +106,19 @@ export class HomePage {
     setTimeout(() => {
 		  loading.dismiss();
 	    }, 3000);
-	    
+	
+	this.http.get('https://www.polomaxten.com/wp-json/wp/v2/media?search=slide').map(res => res.json()).subscribe(data => {
+		let slider = data;
+		console.log(slider);
+		
+		this.sliders = [];
+		for(var i=0; i< slider.length; i++) {
+			if(slider[i].slug === "slide1" || slider[i].slug === "slide2" || slider[i].slug === "slide3" || slider[i].slug === "slide4" || slider[i].slug === "slide5") {
+				this.sliders.push(slider[i]);
+			}
+		}
+		localStorage.setItem('sliders', JSON.stringify(this.sliders));
+		console.log(this.sliders);
+	});
   }
 }

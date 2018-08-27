@@ -19,9 +19,9 @@
 		</ion-refresher-content>
 	</ion-refresher>
 	
-	<ion-slides loop="true" autoplay="2000" pager>
-      <ion-slide *ngFor="let number of [1,2]">
-        <img src="./assets/images/{{number}}.jpg" />
+	<ion-slides loop="true" pager>
+      <ion-slide *ngFor="let img of sliders">
+        <img [src]="img.guid.rendered" />
       </ion-slide>    
     </ion-slides>
     
